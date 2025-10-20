@@ -1,0 +1,51 @@
+users = {}
+
+def register():
+    print("\n--- REGISTER ---")
+    username = input("Enter a username: ")
+    password = input("Enter a password: ")
+
+    if username in users:
+        print("️ This username is already taken.")
+    else:
+        users[username] = password
+        print(" Registration successful! You can now log in.")
+        login()
+
+
+def login():
+    print("\n--- LOGIN ---")
+    username = input("Username: ")
+    password = input("Password: ")
+
+
+    if username in users and users[username] == password:
+        print(f" Welcome, {username}!")
+    else:
+        print(" Invalid username or password.")
+        retry = input("Do you want to try again? (y/n): ").lower()
+
+        if retry == "y":
+            login()
+        else:
+            print(" Goodbye!")
+
+
+
+while True:
+    print("\n=== MAIN MENU ===")
+    print("1 - Register")
+    print("2 - Login")
+    print("3 - Exit")
+
+    choice = input("Choose an option: ")
+
+    if choice == "1":
+        register()
+    elif choice == "2":
+        login()
+    elif choice == "3":
+        print("Exiting the program... ")
+        break
+    else:
+        print(" Invalid choice. Please try again.")
